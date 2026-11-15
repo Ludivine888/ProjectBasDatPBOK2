@@ -27,7 +27,7 @@ public class KlinikApp extends Application {
                 scene.getStylesheets().add(cssResource.toExternalForm());
             }
 
-            stage.setTitle("Login - Sistem Informasi Klinik Medika");
+            stage.setTitle("Login - Sistem Informasi MYCLINIC");
             stage.setScene(scene);
             stage.setResizable(true);
             stage.centerOnScreen();

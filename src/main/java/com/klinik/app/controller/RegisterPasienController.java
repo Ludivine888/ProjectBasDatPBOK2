@@ -178,7 +178,7 @@ public class RegisterPasienController {
                 }
 
                 stage.setScene(scene);
-                stage.setTitle("Login - Sistem Klinik Medika");
+                stage.setTitle("Login - Sistem MYCLINIC");
                 stage.centerOnScreen();
                 stage.show();
             }

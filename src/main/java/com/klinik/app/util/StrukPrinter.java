@@ -37,7 +37,7 @@ public class StrukPrinter {
         String spesialisasi = dokter != null && dokter.getSpesialisasi() != null ? dokter.getSpesialisasi() : "Praktik Umum";
 
         sb.append("=================================================================\n");
-        sb.append("                    KLINIK PRATAMA MEDIKA SEHAT                  \n");
+        sb.append("                      MYCLINIC                   \n");
         sb.append("               Jl. Pemuda No. 45 Kebumen - Jawa Tengah           \n");
         sb.append("                       Telp: (0287) 381-999                      \n");
         sb.append("=================================================================\n");

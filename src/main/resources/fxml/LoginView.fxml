@@ -26,7 +26,7 @@
             <!-- Header Icon & Branding -->
             <VBox alignment="CENTER" spacing="6.0">
                <Label text="🏥" style="-fx-font-size: 38px;" />
-               <Label text="KLINIK MEDIKA" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #0f172a;" />
+               <Label text="MYCLINIC" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #0f172a;" />
                <Label text="Sistem Manajemen Informasi Pelayanan Medis" styleClass="text-muted" textAlignment="CENTER" wrapText="true" />
             </VBox>
 

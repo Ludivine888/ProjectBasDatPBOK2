@@ -21,7 +21,7 @@
             <HBox alignment="CENTER_LEFT" spacing="10.0">
                <Label text="🏥" style="-fx-font-size: 24px;" />
                <VBox alignment="CENTER_LEFT" spacing="2.0">
-                  <Label text="KLINIK MEDIKA" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: white;" />
+                  <Label text="MYCLINIC" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: white;" />
                   <Label text="Sistem Informasi Pelayanan Medis Terpadu" style="-fx-font-size: 11px; -fx-text-fill: #94a3b8;" />
                </VBox>
             </HBox>

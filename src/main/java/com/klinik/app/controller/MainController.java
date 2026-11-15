@@ -97,7 +97,7 @@ public class MainController {
             }
 
             stage.setScene(scene);
-            stage.setTitle("Login - Sistem Klinik Medika");
+            stage.setTitle("Login - Sistem MYCLINIC");
             stage.centerOnScreen();
             stage.show();
         } catch (Exception e) {

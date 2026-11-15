@@ -89,12 +89,12 @@ public class LoginController {
                 if (akun instanceof AdminSystem) {
                     AdminSystem admin = (AdminSystem) akun;
                     UserSession.setSession(admin, "ADMIN");
-                    bukaHalamanUtama("/fxml/MainView.fxml", "Klinik Medika - Portal Administrator (" + admin.getNamaLengkap() + ")");
+                    bukaHalamanUtama("/fxml/MainView.fxml", "MYCLINIC - Portal Administrator (" + admin.getNamaLengkap() + ")");
 
                 } else if (akun instanceof Dokter) {
                     Dokter dokter = (Dokter) akun;
                     UserSession.setSession(dokter, "DOKTER");
-                    bukaHalamanUtama("/fxml/MainView.fxml", "Klinik Medika - Portal Dokter (" + dokter.getNamaLengkap() + ")");
+                    bukaHalamanUtama("/fxml/MainView.fxml", "MYCLINIC - Portal Dokter (" + dokter.getNamaLengkap() + ")");
 
                 } else if (akun instanceof Pasien) {
                     Pasien p = (Pasien) akun;
