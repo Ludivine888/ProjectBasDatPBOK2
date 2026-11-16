@@ -18,9 +18,14 @@ import javafx.scene.layout.VBox;
 import javafx.util.StringConverter;
 
 import java.sql.SQLException;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class AntreanController {
 
@@ -31,6 +36,7 @@ public class AntreanController {
     @FXML private Button btnTambahAntrean;
     @FXML private Label lblPasienBerikutnya;
     @FXML private Label lblQueueStats;
+    @FXML private Label lblAutoRefreshStatus;
     @FXML private VBox boxAdminInputs;
     @FXML private Button btnPanggil;
 
@@ -59,6 +65,7 @@ public class AntreanController {
     };
 
     private final PriorityQueue<Antrean> antreanPriorityQueue = new PriorityQueue<>(triaseComparator);
+    private ScheduledExecutorService autoRefreshScheduler;
 
     private int getBobotUrgensi(String urgensi) {
         if (urgensi == null) return 3;
@@ -93,6 +100,7 @@ public class AntreanController {
 
         setupDropdowns();
         loadDataAntrean();
+        startAutoRefresh();
     }
 
     private void setupTableStyling() {
@@ -273,6 +281,11 @@ public class AntreanController {
             int total = listTableAntrean.size();
             lblQueueStats.setText("Total Pasien Aktif: " + total + " orang");
         }
+
+        if (lblAutoRefreshStatus != null) {
+            String timeNow = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+            lblAutoRefreshStatus.setText("● Auto-refresh (5s) • " + timeNow);
+        }
     }
 
     @FXML
@@ -352,5 +365,22 @@ public class AntreanController {
         alert.setHeaderText(null);
         alert.setContentText(content);
         alert.showAndWait();
+    }
+
+    private void startAutoRefresh() {
+        autoRefreshScheduler = Executors.newSingleThreadScheduledExecutor(r -> {
+            Thread t = new Thread(r, "Antrean-AutoRefresh-Thread");
+            t.setDaemon(true); // otomatis berhenti saat aplikasi ditutup
+            return t;
+        });
+
+        autoRefreshScheduler.scheduleAtFixedRate(() -> {
+            // Hentikan thread otomatis jika user sudah logout atau keluar dari halaman antrean
+            if (UserSession.getInstance() == null || tableAntrean == null || tableAntrean.getScene() == null) {
+                autoRefreshScheduler.shutdown();
+                return;
+            }
+            loadDataAntrean();
+        }, 5, 5, TimeUnit.SECONDS);
     }
 }

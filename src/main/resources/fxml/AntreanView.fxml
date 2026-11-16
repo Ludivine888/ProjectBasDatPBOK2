@@ -26,6 +26,7 @@
             <Label text="Sistem antrean cerdas berbasis Prioritas Triase (Merah > Kuning > Hijau)" styleClass="text-muted"/>
         </VBox>
         <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="lblAutoRefreshStatus" text="● Auto-refresh (5s)" styleClass="badge, badge-hijau" style="-fx-font-size: 12px; -fx-padding: 6 12;"/>
         <Label fx:id="lblQueueStats" text="Total Antrean: 0 orang" styleClass="badge, badge-primary" style="-fx-font-size: 13px; -fx-padding: 6 12;"/>
         <Button text="🔄 Refresh" onAction="#loadDataAntrean" styleClass="btn-outline"/>
     </HBox>
